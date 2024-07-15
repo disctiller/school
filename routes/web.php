@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GradeController;
 
@@ -11,6 +12,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Rutas de Instituciones
+Route::get('/institucion', [InstitucionController::class,'index'])->name('instituciones.index');
+Route::get('/institucion/create', [InstitucionController::class,'create'])->name('instituciones.create');
+Route::post('/institucion', [InstitucionController::class,'store'])->name('instituciones.store');
+Route::get('/institucion/{institucion}', [InstitucionController::class,'show'])->name('instituciones.show');
+Route::get('/institucion/{institucion}/edit', [InstitucionController::class,'edit'])->name('instituciones.edit');
+Route::patch('/institucion/{institucion}',[InstitucionController::class,'update'])->name('instituciones.update');
+Route::get('/institucion/{institucion}/delete',[InstitucionController::class,'destroy'])->name('instituciones.delete');
+
 
 // Groups Routes
 Route::get('/group', [GroupController::class,'index'])->name('groups.index');

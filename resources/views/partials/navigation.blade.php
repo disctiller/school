@@ -3,14 +3,14 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('home')}}">
-              <span data-feather="home"></span>
+              <span data-feather="tablet"></span>
               Inicio
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('groups.index')}}">
-              <span data-feather="users"></span>
-              Grupos
+            <a class="nav-link" href="{{ route('instituciones.index')}}">
+              <span data-feather="home"></span>
+              Instituciones
             </a>
           </li>
           <li class="nav-item">

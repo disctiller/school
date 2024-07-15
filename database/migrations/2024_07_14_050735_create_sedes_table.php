@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre', 45);
             $table->string('dane', 45);
             $table->unsignedBigInteger('institucion_id');
-            $table->foreign('institucion_id')->references('id')->on('instituciones');
+            $table->foreign('institucion_id')->references('id')->on('instituciones')->onDelete("cascade");
             $table->timestamps();
         });
     }
