@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Sede;
+use App\Models\Institucion;
 use Illuminate\Http\Request;
 
 class SedeController extends Controller
@@ -19,7 +20,8 @@ class SedeController extends Controller
     }
 
     public function create(){
-        return view('sedes.create');
+        $instituciones= Institucion::all();
+        return view('sedes.create',compact('instituciones'));
     }
 
     public function store(Request $request){
@@ -31,14 +33,15 @@ class SedeController extends Controller
         $sede = new Sede;
         $sede->nombre = $request->input('nombre');
         $sede->dane = $request->input('dane');
-        $sede->dane = $request->input('institucion_id');
+        $sede->institucion_id = $request->input('institucion_id');
         $sede->save();
         session()->flash('status','¡Sede Guardada!');
         return to_route('sedes.index');
     }
 
     public function edit(Sede $sede){
-        return view('sedes.edit',['sede'=> $sede]);
+        $instituciones= Institucion::all();
+        return view('sedes.edit',['sede'=> $sede],compact('instituciones'));
     }
 
     public function update(Request $request, $id){
@@ -50,7 +53,7 @@ class SedeController extends Controller
         $sede = Sede::find($id);
         $sede->nombre = $request->input('nombre');
         $sede->dane = $request->input('dane');
-        $sede->dane = $request->input('institucion_id');
+        $sede->institucion_id = $request->input('institucion_id');
         $sede->save();
         session()->flash('status','¡Sede Actualizada!');
         return to_route('sedes.index');

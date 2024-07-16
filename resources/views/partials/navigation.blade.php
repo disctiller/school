@@ -14,9 +14,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('grades.index')}}">
+            <a class="nav-link" href="{{ route('sedes.index')}}">
               <span data-feather="bar-chart"></span>
-              Grados
+              Sedes
             </a>
           </li>
           <li class="nav-item">
