@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Sede;
 use App\Models\Institucion;
+use App\Models\Grado;
 use Illuminate\Http\Request;
 
 class SedeController extends Controller
@@ -64,5 +65,11 @@ class SedeController extends Controller
         $sede->delete();
         session()->flash('status','¡Sede Eliminada!');
         return to_route('sedes.index');
+    }
+
+    public function mostrargrados($id){
+        $grados = Grado::all();
+        $sede = Sede::find($id);
+        return view('sedes.grados',['grados'=> $grados],['sede'=> $sede]);
     }
 }

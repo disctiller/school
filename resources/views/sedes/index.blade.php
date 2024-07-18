@@ -24,6 +24,7 @@
           <th scope="col">Nombre</th>
           <th scope="col">Dane</th>
           <th scope="col">Institucion</th>
+          <th scope="col">Grados</th>
           <th scope="col">Detalle</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
@@ -37,6 +38,9 @@
         <td>{{ $sede->dane }}</td>
         <td>{{ $sede->institucion->nombre }}</td>
         <td>
+        <h6 style=""><a href="{{ route('sedes.mostrargrados', $sede->id) }}"><span data-feather="bar-chart"></span></a></h6>
+        </td>
+                <td>
         <h6 style=""><a href="{{ route('sedes.show', $sede->id) }}"><span data-feather="search"></span></a></h6>
         </td>
         <td><a href="{{ route('sedes.edit', $sede->id) }}"><span data-feather="edit"></span></a></td>

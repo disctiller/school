@@ -15,7 +15,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('sedes.index')}}">
-              <span data-feather="bar-chart"></span>
+              <span data-feather="grid"></span>
               Sedes
             </a>
           </li>
