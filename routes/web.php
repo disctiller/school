@@ -32,6 +32,7 @@ Route::get('/sede/{sede}/edit', [SedeController::class,'edit'])->name('sedes.edi
 Route::patch('/sede/{sede}',[SedeController::class,'update'])->name('sedes.update');
 Route::get('/sede/{sede}/delete',[SedeController::class,'destroy'])->name('sedes.delete');
 Route::get('/sede/{sede}/grados',[SedeController::class,'mostrargrados'])->name('sedes.mostrargrados');
+Route::patch('/sede/{sede}/grados',[SedeController::class,'guardargrados'])->name('sedes.guardargrados');
 
 // Groups Routes
 Route::get('/group', [GroupController::class,'index'])->name('groups.index');

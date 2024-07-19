@@ -70,6 +70,11 @@ class SedeController extends Controller
     public function mostrargrados($id){
         $grados = Grado::all();
         $sede = Sede::find($id);
-        return view('sedes.grados',['grados'=> $grados],['sede'=> $sede]);
+        return view('sedes.grados',['grados'=> $grados],compact('sede'));
+    }
+
+    public function guardargrados(Request $request, $id){
+        $sede = Sede::find($id);
+        return $sede->grados()->sync($request[]);
     }
 }

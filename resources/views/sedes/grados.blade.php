@@ -14,19 +14,29 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" method="POST" action="#">
+                <form class="form-horizontal" method="POST" action="{{ route('sedes.guardargrados', $sede)}}">
                     @csrf @method('PATCH')
                     <fieldset>
-                    @foreach ($grados as $grado)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                            {{ $grado->codigo }} - {{ $grado->nombre }}
-                            </label>
-                        </div>
+                        @foreach ($grados as $grado)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="grados_sedes[]"
+                                    value="{{ $grado->id }}" id="{{ $grado->id }}"
+                                    @if ($sede->grados)
+                                    @foreach ($sede->grados as $sedegrado)
+                                    @if ($grado->id == $sedegrado->id)
+                                    checked
+                                    @endif
+                                    @endforeach
+                                    @endif
+                                    >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    {{ $grado->codigo }} - {{ $grado->nombre }}
+                                </label>
+                            </div>
                         @endforeach
                         <button class="btn btn-primary mt-3" type="submit">Guardar</button>
                     </fieldset>
+
                 </form>
             </div>
         </div>

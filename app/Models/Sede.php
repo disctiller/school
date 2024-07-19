@@ -14,4 +14,11 @@ class Sede extends Model
     {
         return $this->belongsTo('App\Models\Institucion');
     }
+
+    //relacion muchos a muchos
+    public function grados()
+    {
+        return $this->belongsToMany(Grado::class,'sede_grado');
+    }
+
 }
