@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Sede;
 use App\Models\Institucion;
 use App\Models\Grado;
+use App\Models\SedeGrado;
 use Illuminate\Http\Request;
 
 class SedeController extends Controller
@@ -70,12 +71,14 @@ class SedeController extends Controller
     public function mostrargrados($id){
         $grados = Grado::all();
         $sede = Sede::find($id);
-        return view('sedes.grados',['grados'=> $grados],compact('sede'));
+        $sede_grado = SedeGrado::where('sede_id', $id)->get();
+        return view('sedes.grados',['grados'=> $grados],compact('sede','sede_grado'));
     }
 
     public function guardargrados(Request $request, $id){
         $sede = Sede::find($id);
         $sede->grados()->sync($request->input('grados_sedes'));
+        session()->flash('status','¡Grados Actualizados!');
         return to_route('sedes.index');
     }
 }

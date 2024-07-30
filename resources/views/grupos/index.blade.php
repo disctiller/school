@@ -5,20 +5,30 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-secondary"
-                    onclick="window.location='{{ route('sedes.index') }}'">Regresar</button>
+                    onclick="window.location='{{ route('sedes.mostrargrados', $sede->id) }}'">Regresar</button>
             </div>
         </div>
     </div>
-    <h2>Grupos de la Sede: {{ $sede->nombre }}</h2>
+    <h4>Grupos: {{ $sede->institucion->nombre }} - {{ $sede->nombre }} - Grado {{ $grado->nombre }}</h4>
 
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" method="POST" action="">
+                <form class="form-horizontal" method="POST" action="{{ route('grupos.guardargrupos', $sede_grado->id)}}">
                     @csrf @method('PATCH')
                     <fieldset>
                         @foreach ($grupos as $grupo)
                             <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="grado_grupos[]"
+                                    value="{{ $grupo->id }}" id="{{ $grupo->id }}"
+                                    @if ($grado_grupo)
+                                    @foreach ($grado_grupo as $grad_grup)
+                                    @if ($grupo->id == $grad_grup->grupo_id)
+                                    checked
+                                    @endif
+                                    @endforeach
+                                    @endif
+                                    >
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {{ $grupo->codigo }} - {{ $grupo->nombre }}
                                 </label>

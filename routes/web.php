@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\GradoGrupo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\SedeController;
@@ -35,4 +36,4 @@ Route::patch('/sede/{sede}/grados',[SedeController::class,'guardargrados'])->nam
 
 // Rutas de Grupos
 Route::get('/grupo/{sede_id}/{grado_id}/',[GrupoController::class,'mostrargrupos'])->name('grupos.mostrargrupos');
-
+Route::patch('/guardargrupos/{sede_grado}',[GrupoController::class,'guardargrupos'])->name('grupos.guardargrupos');
