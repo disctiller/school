@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SedeGrado extends Model
 {
     use HasFactory;
+
+    protected $table = 'sede_grado';
+
+    public function Grupos()
+    {
+        return $this->belongsToMany(Grupo::class,'grado_grupo');
+    }
 }

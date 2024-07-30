@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Grado extends Model
+class GradoGrupo extends Model
 {
     use HasFactory;
-
-    public function sede()
-    {
-        return $this->belongsToMany(Sede::class,'sede_grado');
-    }
-
-
+    protected $table = 'grado_grupo';
 }

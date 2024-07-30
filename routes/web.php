@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\SedeController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\GradeController;
+use App\Http\Controllers\GrupoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,11 +33,6 @@ Route::get('/sede/{sede}/delete',[SedeController::class,'destroy'])->name('sedes
 Route::get('/sede/{sede}/grados',[SedeController::class,'mostrargrados'])->name('sedes.mostrargrados');
 Route::patch('/sede/{sede}/grados',[SedeController::class,'guardargrados'])->name('sedes.guardargrados');
 
-// Groups Routes
-Route::get('/group', [GroupController::class,'index'])->name('groups.index');
-Route::get('/group/create', [GroupController::class,'create'])->name('groups.create');
-Route::post('/group', [GroupController::class,'store'])->name('groups.store');
-Route::get('/group/{group}', [GroupController::class,'show'])->name('groups.show');
-Route::get('/group/{group}/edit', [GroupController::class,'edit'])->name('groups.edit');
-Route::patch('/group/{group}',[GroupController::class,'update'])->name('groups.update');
-Route::get('/group/{group}/delete',[GroupController::class,'destroy'])->name('groups.delete');
+// Rutas de Grupos
+Route::get('/grupo/{sede_id}/{grado_id}/',[GrupoController::class,'mostrargrupos'])->name('grupos.mostrargrupos');
+

@@ -32,6 +32,9 @@
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {{ $grado->codigo }} - {{ $grado->nombre }}
                                 </label>
+                                <div class="p-2">
+                                <a href="{{ route('grupos.mostrargrupos', ['sede_id' => $sede->id , 'grado_id' => $grado->id ]) }}"><span data-feather="users"></span>Ver Grupos Asociados</a>
+                                </div>
                             </div>
                         @endforeach
                         <button class="btn btn-primary mt-3" type="submit">Guardar</button>

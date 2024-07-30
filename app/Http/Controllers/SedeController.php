@@ -75,6 +75,7 @@ class SedeController extends Controller
 
     public function guardargrados(Request $request, $id){
         $sede = Sede::find($id);
-        return $sede->grados()->sync($request[]);
+        $sede->grados()->sync($request->input('grados_sedes'));
+        return to_route('sedes.index');
     }
 }
