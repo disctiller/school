@@ -81,4 +81,14 @@ class SedeController extends Controller
         session()->flash('status','¡Grados Actualizados!');
         return to_route('sedes.index');
     }
+
+    public function sedesbyinstitucion($institucion_id){
+        $sedes = Sede::where('institucion_id',$institucion_id)->get();
+        return response()->json($sedes);
+    }
+
+    public function gradosbysede($sede_id){
+        $sede = Sede::find($sede_id);
+        return response()->json($sede->grados);
+    }
 }

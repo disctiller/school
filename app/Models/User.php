@@ -17,7 +17,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'numero_documento',
+        'nombre1',
+        'nombre2',
+        'apellido1',
+        'apellido2',
+        'rol_id',
         'email',
         'password',
     ];
@@ -44,4 +49,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+       //relacion uno a muchos
+       public function rol()
+       {
+           return $this->belongsTo('App\Models\Rol');
+       }
+
+       public function estudiante()
+       {
+        return $this->hasOne('App\Models\Estudiante');
+       }
 }

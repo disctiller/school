@@ -29,4 +29,11 @@ class GrupoController extends Controller
         return to_route('sedes.mostrargrados',['sede' => $sede_grado->sede_id]);
     }
 
+    public function gruposbygrado($sede_id, $grado_id){
+        $sede_grado = SedeGrado::where('sede_id', $sede_id)
+        ->where('grado_id', $grado_id)
+        ->first();
+        return response()->json($sede_grado->grupos);
+    }
+
 }
